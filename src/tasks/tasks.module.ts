@@ -7,7 +7,8 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './store/reducers/task.reducer';
 import { TaskListComponent } from "./containers/task-list/task-list.component";
 import { TaskDetailsComponent } from "./containers/task-details/task-details.component";
-import { TaskComponent } from "./components/task/task.component";
+
+import * as fromComponents from './components';
 
 const ROUTES: Routes = [
   {
@@ -30,7 +31,7 @@ const ROUTES: Routes = [
   declarations: [
     TaskListComponent,
     TaskDetailsComponent,
-    TaskComponent
+    ...fromComponents.components
   ],
   providers: [],
   exports: []

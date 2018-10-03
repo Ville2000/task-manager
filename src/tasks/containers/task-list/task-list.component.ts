@@ -5,40 +5,37 @@ import { Router } from '@angular/router';
 
 import { TaskState, selectAllTasks } from '../../store/reducers/task.reducer';
 import { Component } from "@angular/core";
-import { Task } from "../../models/task.model";
+import { Task, emptyTask } from "../../models/task.model";
 import * as fromActions from '../../store/actions';
 
 @Component({
   template: `
-    <h1>Task list works!</h1>
-    <div *ngFor="let task of tasks | async">
+    <h1>Tehtävälista</h1>
+    <div *ngIf="!((tasks$ | async).length)">
+      Ei tehtäviä tehtävälistalla
+    </div>
+    <div *ngFor="let task of tasks$ | async">
       <task (click)="selectTask(task.id)"
         [task]="task"
         (remove)=removeTask($event)></task>
     </div>
-    <form (ngSubmit)="addTask()">
-      <input type="text" name="task-name" [(ngModel)]="newTask.name"/>
-      <button>Lisää tehtävä</button>
-    </form>
+    <task-form
+      [task]="newTask"
+      (submitTask)="addTask($event)"></task-form>
   `
 })
 
 export class TaskListComponent {
-  private tasks: Observable<Task[]>;
-  private newTask: Task = {
-    name: null,
-    date: new Date(),
-    comments: [],
-    done: false,
-    creator: "Ville"
-  }
+  private tasks$: Observable<Task[]>;
+  public newTask: Task = emptyTask();
 
   constructor(private store: Store<TaskState>, private router: Router) {
-    this.tasks = this.store.pipe(select(selectAllTasks));
+    this.tasks$ = this.store.pipe(select(selectAllTasks));
   }
 
-  addTask(): void {
-    this.store.dispatch(new fromActions.AddTask({ ...this.newTask }));
+  addTask(task: Task): void {
+    this.store.dispatch(new fromActions.AddTask({ ...task }));
+    this.newTask = emptyTask();
   }
 
   removeTask(id: number): void {

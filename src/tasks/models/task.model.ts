@@ -8,3 +8,13 @@ export interface Task {
   creator: string;
   comments: number[];
 }
+
+export const emptyTask = () => {
+  return {
+    name: null,
+    done: false,
+    date: new Date(),
+    creator: null,
+    comments: []
+  };
+}

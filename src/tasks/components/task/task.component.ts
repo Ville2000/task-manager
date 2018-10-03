@@ -5,8 +5,9 @@ import { Task } from "../../models/task.model";
   selector: 'task',
   template: `
     <div>
-      <h2>{{ task.name }}</h2>
-      <button (click)="remove.emit(task.id)">Remove</button>
+      <div>{{ task.name }}</div>
+      <div>{{ task.comments.length }}</div>
+      <button (click)="remove.emit(task.id)">Poista</button>
     </div>
   `
 })

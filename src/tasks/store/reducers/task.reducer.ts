@@ -11,16 +11,7 @@ export interface TaskState {
 }
 
 export const initialState: TaskState = {
-    tasks: [
-        {
-            id: 1,
-            name: "Kirjoita raportti",
-            creator: "Ville",
-            done: false,
-            date: new Date(),
-            comments: [1, 2]
-        }   
-    ],
+    tasks: [],
     loading: false,
     loaded: false,
     selectedTask: null
