@@ -1,12 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './containers/app/app.component';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-import { RouterModule, Routes } from '@angular/router';
-import { FourOhFourComponent } from './containers/four-oh-four/four-oh-four.component';
+import { StoreModule, ActionReducerMap } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../../environments/environment';
+
 import { TasksModule } from '../tasks/tasks.module';
+
+import { AppComponent } from './containers/app/app.component';
+import { FourOhFourComponent } from './containers/four-oh-four/four-oh-four.component';
+import { TaskState, reducer } from '../tasks/store/reducers/task.reducer';
+
+export interface AppState {
+  tasks: TaskState;
+}
+
+const reducers: ActionReducerMap<AppState> = {
+  tasks: reducer
+}
 
 const ROUTES: Routes = [
   {
@@ -16,7 +29,7 @@ const ROUTES: Routes = [
   },
   {
     path: 'tasks',
-    loadChildren: './../tasks/task.module#TaskModule'
+    loadChildren: () => TasksModule
   },
   {
     path: '**', component: FourOhFourComponent
@@ -31,8 +44,12 @@ const ROUTES: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    TasksModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

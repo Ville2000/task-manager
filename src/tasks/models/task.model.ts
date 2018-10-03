@@ -5,5 +5,6 @@ export interface Task {
   name: string;
   done: boolean;
   date: Date;
-  comments: Comment[];
+  creator: string;
+  comments: number[];
 }
