@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -43,7 +42,6 @@ const ROUTES: Routes = [
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     RouterModule.forRoot(ROUTES),
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({

@@ -1,5 +1,3 @@
-import { Comment } from './comment.model';
-
 export interface Task {
   id?: number;
   name: string;
@@ -9,7 +7,7 @@ export interface Task {
   comments: number[];
 }
 
-export const emptyTask = () => {
+export const emptyTask = (): Task => {
   return {
     name: null,
     done: false,

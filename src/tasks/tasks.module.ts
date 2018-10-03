@@ -1,36 +1,33 @@
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module'
+
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 
 import { reducer } from './store/reducers/task.reducer';
-import { TaskListComponent } from "./containers/task-list/task-list.component";
-import { TaskDetailsComponent } from "./containers/task-details/task-details.component";
 
+import * as fromContainers from './containers';
 import * as fromComponents from './components';
 
 const ROUTES: Routes = [
   {
     path: '',
-    component: TaskListComponent,
+    component: fromContainers.TaskListComponent,
   },
   {
     path: ':taskId',
-    component: TaskDetailsComponent
+    component: fromContainers.TaskDetailsComponent
   }
 ]
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
+    SharedModule,
     RouterModule.forChild(ROUTES),
     StoreModule.forFeature('tasks', reducer)
   ],
   declarations: [
-    TaskListComponent,
-    TaskDetailsComponent,
+    ...fromContainers.containers,
     ...fromComponents.components
   ],
   providers: [],
