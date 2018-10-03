@@ -17,7 +17,7 @@ import * as fromActions from '../../store/actions';
     <div *ngFor="let task of tasks$ | async">
       <task (click)="selectTask(task.id)"
         [task]="task"
-        (remove)=removeTask($event)></task>
+        (remove)="removeTask($event)"></task>
     </div>
     <task-form
       [task]="newTask"
