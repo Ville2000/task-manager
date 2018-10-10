@@ -4,6 +4,7 @@
     grid-template-rows: repeat(2, max-content);
     grid-gap: 8px;
     padding: 8px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 .task__name {

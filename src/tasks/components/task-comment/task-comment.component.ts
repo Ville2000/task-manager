@@ -3,9 +3,9 @@ import { Comment } from "../../models/comment.model";
 
 @Component({
     selector: 'task-comment',
-    styleUrls: [],
+    styleUrls: ['./task-comment.component.css'],
     template: `
-        <p>{{ comment.comment }}</p>
+        <div>{{ comment.comment }}</div>
         <div>{{ comment.likes }}</div>
     `
 })

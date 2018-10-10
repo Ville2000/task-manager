@@ -11,10 +11,10 @@ import { Task } from '../../models/task.model'
 import { Comment, emptyComment } from '../../models/comment.model';
 
 @Component({
+  styleUrls: ['./task-details.component.css'],
   template: `
-    <h1>Task Details Works!</h1>
-    <div>{{ (task$ | async).name }}</div>
-    <div *ngIf="!((task$ | async).length)">Ei kommentteja tehtävällä</div>
+    <h2>{{ (task$ | async).name }}</h2>
+    <div *ngIf="!((task$ | async).comments.length)">Ei kommentteja tehtävällä</div>
     <div *ngFor="let comment of (task$ | async).comments">
       <task-comment [comment]="comment"></task-comment>
     </div>
@@ -31,8 +31,9 @@ export class TaskDetailsComponent {
   public newComment: Comment = emptyComment();
 
   constructor(private store: Store<fromReducers.TaskState>, private route: ActivatedRoute) {
+    const taskId: number = parseInt(this.route.snapshot.paramMap.get('taskId'));
     this.task$ = this.store.pipe(select(fromStore.selectSelectedTask));
-    this.store.dispatch(new fromActions.GetTask(parseInt(this.route.snapshot.paramMap.get('taskId'))));
+    this.store.dispatch(new fromActions.GetTask(taskId));
   }
 
   submitComment(): void {

@@ -4,11 +4,13 @@ import { Action } from '@ngrx/store';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 
 import { Observable, of } from 'rxjs';
-import { mergeMap, map, catchError, tap } from "rxjs/operators";
+import { mergeMap, map, catchError } from "rxjs/operators";
 
 import * as fromActions from '../actions';
 import { TaskService } from "src/tasks/services/task.service";
 import { Task } from '../../models/task.model';
+
+// RxJS:ssään apuja https://www.learnrxjs.io/
 
 // TODO: Täällä hoidetaan side effectit.
 @Injectable()
