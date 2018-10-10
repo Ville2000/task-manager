@@ -9,19 +9,22 @@ import { Task, emptyTask } from "../../models/task.model";
 import * as fromActions from '../../store/actions';
 
 @Component({
+  styleUrls: ['./task-list.component.css'],
   template: `
-    <h1>Tehtävälista</h1>
+    <h2>Tehtävälista</h2>
     <div *ngIf="!((tasks$ | async).length)">
       Ei tehtäviä tehtävälistalla
     </div>
-    <div *ngFor="let task of tasks$ | async">
-      <task (click)="selectTask(task.id)"
+    <div *ngFor="let task of tasks$ | async; let odd = odd; let even = even;">
+      <task class="task-list__task"
+        [ngClass]="{ odd: odd, even: even }"
         [task]="task"
-        (remove)="removeTask($event)"></task>
+        (remove)="removeTask($event)"
+        (click)="selectTask(task.id)"></task>
     </div>
-    <task-form
+    <task-form class="task-list__form"
       [task]="newTask"
-      (submitTask)="addTask($event)"></task-form>
+      (submit)="addTask()"></task-form>
   `
 })
 
@@ -31,10 +34,11 @@ export class TaskListComponent {
 
   constructor(private store: Store<TaskState>, private router: Router) {
     this.tasks$ = this.store.pipe(select(selectAllTasks));
+    this.store.dispatch(new fromActions.LoadTasks());
   }
 
-  addTask(task: Task): void {
-    this.store.dispatch(new fromActions.AddTask({ ...task }));
+  addTask(): void {
+    this.store.dispatch(new fromActions.AddTask({ ...this.newTask }));
     this.newTask = emptyTask();
   }
 

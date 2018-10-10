@@ -24,7 +24,8 @@ export function reducer(state: TaskState = initialState, action: fromActions.Tas
     }
 
     case fromActions.LOAD_TASKS_SUCCESS: {
-        return { ...state, loading: false, loaded: true };
+        const tasks: Task[] = action.payload;
+        return { ...state, loading: false, loaded: true, tasks };
     }
 
     case fromActions.LOAD_TASKS_FAIL: {
@@ -46,6 +47,15 @@ export function reducer(state: TaskState = initialState, action: fromActions.Tas
     case fromActions.SELECT_TASK: {
         const selectedTask: Task = state.tasks.find((task: Task) => task.id === action.payload);
         return { ...state, selectedTask };
+    }
+
+    case fromActions.GET_TASK_SUCCESS: {
+        const selectedTask: Task = action.payload;
+        return { ...state, selectedTask };
+    }
+
+    case fromActions.GET_TASK_FAIL: {
+        return state;
     }
 
     default: {

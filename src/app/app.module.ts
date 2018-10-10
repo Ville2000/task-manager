@@ -4,13 +4,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { EffectsModule } from '@ngrx/effects';
+
 import { environment } from '../../environments/environment';
 
 import { TasksModule } from '../tasks/tasks.module';
 
-import { AppComponent } from './containers/app/app.component';
-import { FourOhFourComponent } from './containers/four-oh-four/four-oh-four.component';
 import { TaskState, reducer } from '../tasks/store/reducers/task.reducer';
+
+import * as fromContainers from './containers';
+import * as fromComponents from './components';
+
 
 export interface AppState {
   tasks: TaskState;
@@ -31,14 +36,14 @@ const ROUTES: Routes = [
     loadChildren: () => TasksModule
   },
   {
-    path: '**', component: FourOhFourComponent
+    path: '**', component: fromContainers.FourOhFourComponent
   }
 ]
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FourOhFourComponent
+    ...fromContainers.containers,
+    ...fromComponents.components
   ],
   imports: [
     BrowserModule,
@@ -47,9 +52,10 @@ const ROUTES: Routes = [
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
-    })
+    }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [fromContainers.AppComponent]
 })
 export class AppModule { }

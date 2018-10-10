@@ -1,21 +1,46 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 import { Action } from '@ngrx/store';
-import { Effect, Actions } from '@ngrx/effects';
+import { Effect, Actions, ofType } from '@ngrx/effects';
 
+import { Observable, of } from 'rxjs';
+import { mergeMap, map, catchError, tap } from "rxjs/operators";
+
+import * as fromActions from '../actions';
+import { TaskService } from "src/tasks/services/task.service";
+import { Task } from '../../models/task.model';
+
+// TODO: Täällä hoidetaan side effectit.
 @Injectable()
 export class TaskEffects {
     // TODO: Effecti voi kuunnella samaa tyyppiä, joka on selektoituna jossai komponentissa.
-    // @Effect()
-    // listTasks$: Observable<Action> = this.actions$
+    // Kuunnellaan moduulin kautta
+    @Effect()
+    listTasks$: Observable<Action> = this.actions$.pipe(
+        ofType(fromActions.LOAD_TASKS),
+        mergeMap((action: fromActions.LoadTasks) =>
+            this.taskService.listTasks().pipe(
+                map((tasks: Task[]) => (new fromActions.LoadTasksSuccess(tasks))),
+                catchError(() => of(new fromActions.LoadTasksFail()))
+            )
+        )
+    );
 
-    // this.http.get('http://localhost:3000/api/tasks')
-    //   .subscribe((tasks: Task[]) => {
-    //     console.log('tasks', tasks);
-    //     this.tasks = tasks;
-    //   })
+    // TODO: Hae by id
+    @Effect()
+    loadTaskById$: Observable<Action> = this.actions$.pipe(
+        ofType(fromActions.GET_TASK),
+        mergeMap((action: fromActions.GetTask) =>
+            this.taskService.getTaskById(action.payload).pipe(
+                // Jos success, dispatch success
+                map((task: Task) => (new fromActions.GetTaskSuccess(task))),
+                // Jos fail, dispatch fail
+                catchError(() => of(new fromActions.GetTaskFail()))
+            )
+        )
+    );
 
-    constructor(private http: HttpClient, private actions$: Actions) {}
+    constructor(
+        private actions$: Actions,
+        private taskService: TaskService) {}
 }

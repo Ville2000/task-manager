@@ -3,12 +3,11 @@ import { Task } from "../../models/task.model";
 
 @Component({
   selector: 'task',
+  styleUrls: ['./task.component.css'],
   template: `
-    <div>
-      <div>{{ task.name }}</div>
-      <div>{{ task.comments.length }}</div>
-      <button (click)="remove.emit(task.id)">Poista</button>
-    </div>
+    <div class="task__name">{{ task.name }}</div>
+    <div class="task__comments">{{ task.comments.length }}</div>
+    <button class="task__remove-btn" (click)="remove.emit(task.id)">x</button>
   `
 })
 

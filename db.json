@@ -6,7 +6,24 @@
       "creator": "Ville",
       "done": false,
       "date": "1538082000000",
-      "comments": [1, 2]
+      "comments": [
+        {
+          "id": 1,
+          "task": 1,
+          "comment": "Pitikö raportin kirjoittamisesta muistaa jotain?",
+          "commentor": "Mauri",
+          "date": "1538219962092",
+          "likes": 1
+        },
+        {
+          "id": 2,
+          "task": 1,
+          "comment": "Riviväli 1,5!",
+          "commentor": "Ville",
+          "date": "1538219962092",
+          "likes": 2
+        }
+      ]
     },
     {
       "id": 2,
@@ -22,7 +39,16 @@
       "creator": "Ville",
       "done": false,
       "date": "1538082000000",
-      "comments": [3]
+      "comments": [
+        {
+          "id": 3,
+          "task": 3,
+          "comment": "Kenet tapaat?",
+          "commentor": "Mauri",
+          "date": "1538219962092",
+          "likes": 0
+        }
+      ]
     },
     {
       "id": 4,

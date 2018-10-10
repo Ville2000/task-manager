@@ -2,9 +2,21 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
 
-## Development server
+## TODO
+* Kirjautuminen
+* Effects
+* Routing
+* Ei entiteettejä?
+* Ei adaptereita
+* Store-devtools, DONE
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Käynnistä kehityspalvelin
+
+Aja `ng serve` ja navigoi selaimella osoitteeseen `http://localhost:4200/`.
+
+## Käynnistä json-server
+
+Käynnistä json-server komennolla ` npx json-server db.json --routes routes.json `. Json-serveriä ei npx-komennolla ajettaessa asenneta koneelle.
 
 ## Code scaffolding
 
@@ -25,3 +37,5 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+

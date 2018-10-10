@@ -1,0 +1,28 @@
+:host {
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    grid-gap: 16px;
+    width: 500px;
+    margin: 32px auto;
+}
+
+h2 {
+    text-align: center;
+    margin: 0;
+}
+
+.task-list__task {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.odd {
+    background-color: #FFF9C4;
+}
+
+.even {
+    background-color: #FFEE58;
+}
+
+.odd:hover, .even:hover {
+    background-color: #FFF59D;
+}

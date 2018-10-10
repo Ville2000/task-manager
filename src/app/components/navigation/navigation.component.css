@@ -1,0 +1,23 @@
+:host {
+    display: grid;
+    grid-template-rows: repeat(2, max-content);
+    grid-gap: 8px;
+    padding: 12px 32px;
+    background-color: #FDD835;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    padding: 8px 0;
+}
+
+a {
+    color: black;
+    font-size: 1.3em;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
