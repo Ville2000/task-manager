@@ -6,7 +6,8 @@ import { Comment } from "../../models/comment.model";
     styleUrls: ['./task-comment.component.css'],
     template: `
         <div>{{ comment.comment }}</div>
-        <div>{{ comment.likes }}</div>
+        <div *ngIf="comment.likes > 0">+ {{ comment.likes }}</div>
+        <div *ngIf="comment.likes === 0">0</div>
     `
 })
 

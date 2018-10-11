@@ -15,13 +15,18 @@ import * as fromActions from '../../store/actions';
     <div *ngIf="!((tasks$ | async).length)">
       Ei tehtäviä tehtävälistalla
     </div>
-    <div *ngFor="let task of tasks$ | async; let odd = odd; let even = even;">
+    <!-- <div *ngFor="let task of tasks$ | async; let odd = odd; let even = even;">
       <task class="task-list__task"
         [ngClass]="{ odd: odd, even: even }"
         [task]="task"
         (remove)="removeTask($event)"
         (click)="selectTask(task.id)"></task>
-    </div>
+    </div> -->
+    <task *ngFor="let task of tasks$ | async; let odd = odd; let even = even;"
+      [ngClass]="{ odd: odd, even: even }"
+      [task]="task"
+      (remove)="removeTask($event)"
+      (click)="selectTask(task.id)"></task>
     <task-form class="task-list__form"
       [task]="newTask"
       (submit)="addTask()"></task-form>

@@ -4,9 +4,9 @@ import { Comment } from "../../models/comment.model";
 
 @Component({
     selector: 'comment-form',
-    styleUrls: [],
+    styleUrls: ['./comment-form.component.css'],
     template: `
-        <textarea name="comment-form--comment" [(ngModel)]="comment.comment"></textarea>
+        <textarea name="comment-form--comment" placeholder="Kommentoi" [(ngModel)]="comment.comment"></textarea>
         <button type="normal" (click)="submit.emit()">Kommentoi</button>
     `
 })

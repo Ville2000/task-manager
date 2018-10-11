@@ -14,14 +14,15 @@ import { Comment, emptyComment } from '../../models/comment.model';
   styleUrls: ['./task-details.component.css'],
   template: `
     <h2>{{ (task$ | async).name }}</h2>
-    <div *ngIf="!((task$ | async).comments.length)">Ei kommentteja tehtävällä</div>
-    <div *ngFor="let comment of (task$ | async).comments">
-      <task-comment [comment]="comment"></task-comment>
+    <div class="comment-list">
+      <h3>Kommentit:</h3>
+      <task-comment *ngFor="let comment of (task$ | async).comments"
+        [comment]="comment"></task-comment>
+      <div *ngIf="!((task$ | async).comments.length)">Ei kommentteja tehtävällä</div>
     </div>
     <comment-form
       [comment]="newComment"
-      (submit)="submitComment($event)">
-      </comment-form>
+      (submit)="submitComment($event)"></comment-form>
   `
 })
 
