@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule, routerReducer, RouterReducerState } from '@ngrx/router-store';
+import { StoreRouterConnectingModule, routerReducer, RouterReducerState, RouterStateSerializer } from '@ngrx/router-store';
 
 import { environment } from '../../environments/environment';
 
@@ -13,6 +13,8 @@ import { TasksModule } from '../tasks/tasks.module';
 import { TaskState, reducer } from '../tasks/store/reducers/task.reducer';
 import * as fromContainers from './containers';
 import * as fromComponents from './components';
+
+import { CustomRouteSerializer } from './router-state';
 
 
 export interface AppState {
