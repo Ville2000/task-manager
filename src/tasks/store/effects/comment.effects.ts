@@ -4,7 +4,7 @@ import { Action } from '@ngrx/store';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 
 import { Observable, of } from 'rxjs';
-import { mergeMap, map, catchError } from "rxjs/operators";
+import { mergeMap, map, catchError, filter } from "rxjs/operators";
 
 import * as fromActions from '../actions';
 import { CommentService } from "src/tasks/services/comment.service";
@@ -29,7 +29,7 @@ export class CommentEffects {
     updateComment$: Observable<Action> = this.actions$.pipe(
         ofType(fromActions.UPDATE_COMMENT),
         mergeMap((action: fromActions.UpdateComment) =>
-            this.commentService.createComment(action.payload).pipe(
+            this.commentService.updateComment(action.payload).pipe(
                 map((comment: Comment) => (new fromActions.AlterCommentSuccess(comment))),
                 catchError(() => of(new fromActions.AlterCommentFail()))
             )
@@ -46,7 +46,6 @@ export class CommentEffects {
             )
         )
     );
-
 
     constructor(
         private actions$: Actions,

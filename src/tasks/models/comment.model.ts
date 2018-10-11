@@ -1,7 +1,7 @@
 export interface Comment {
   id?: number;
   comment: string;
-  date: Date;
+  date: number;
   likes: number;
   task: number;
 }
@@ -9,7 +9,7 @@ export interface Comment {
 export const emptyComment = (): Comment => {
   return {
     comment: null,
-    date: new Date(),
+    date: new Date().getTime(),
     likes: 0,
     task: null
   };

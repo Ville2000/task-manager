@@ -5,21 +5,57 @@
       "name": "Kirjoita raportti",
       "creator": "Ville",
       "done": false,
-      "date": "1538082000000"
+      "date": "1538082000000",
+      "comments": [
+        {
+          "id": 1,
+          "task": 1,
+          "comment": "Pitikö raportin kirjoittamisesta muistaa jotain?",
+          "commentor": "Mauri",
+          "date": "1538219962092",
+          "likes": 1
+        },
+        {
+          "id": 2,
+          "task": 1,
+          "comment": "Riviväli 1,5!",
+          "commentor": "Ville",
+          "date": "1538219962092",
+          "likes": 2
+        }
+      ]
     },
     {
       "id": 2,
       "name": "Palauta raportti",
       "creator": "Ville",
       "done": false,
-      "date": "1538082000000"
+      "date": "1538082000000",
+      "comments": []
     },
     {
       "id": 3,
       "name": "Tapaa opettaja",
       "creator": "Ville",
       "done": false,
-      "date": "1538082000000"
+      "date": "1538082000000",
+      "comments": [
+        {
+          "id": 3,
+          "task": 3,
+          "comment": "Kenet tapaat?",
+          "commentor": "Mauri",
+          "date": "1538219962092",
+          "likes": 0
+        }
+      ]
+    },
+    {
+      "name": "Syö välipala",
+      "done": false,
+      "date": "2018-10-11T11:01:16.394Z",
+      "creator": null,
+      "id": 4
     }
   ],
   "comments": [
@@ -45,7 +81,35 @@
       "comment": "Kenet tapaat?",
       "commentor": "Mauri",
       "date": "1538219962092",
-      "likes": 0
+      "likes": 2
+    },
+    {
+      "comment": "Kom",
+      "date": "2018-10-11T09:19:51.610Z",
+      "likes": 0,
+      "task": 1,
+      "id": 4
+    },
+    {
+      "comment": "test",
+      "date": 1539250215900,
+      "likes": 0,
+      "task": 1,
+      "id": 5
+    },
+    {
+      "comment": "Sainion",
+      "date": 1539253341918,
+      "likes": 3,
+      "task": 3,
+      "id": 6
+    },
+    {
+      "comment": "No syöhän nyt!\n",
+      "date": 1539255732115,
+      "likes": 1,
+      "task": 4,
+      "id": 7
     }
   ]
 }

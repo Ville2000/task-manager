@@ -2,14 +2,19 @@ import { Action } from "@ngrx/store";
 
 import { Comment } from '../../models/comment.model';
 
-export const CREATE_COMMENT: string = '[Comment] Create comment';
-export const UPDATE_COMMENT: string = '[Comment] Update comment';
-export const ALTER_COMMENT_SUCCESS: string = '[Comment] Alter comment success';
-export const ALTER_COMMENT_FAIL: string = '[Comment] Alter comment fail';
+// Älä määritä action constantteja stringeiksi! Muuten tulee jostain syystä error reducerissa
+export const CREATE_COMMENT = '[Comment] Create comment';
+export const UPDATE_COMMENT = '[Comment] Update comment';
+export const ALTER_COMMENT_SUCCESS = '[Comment] Alter comment success';
+export const ALTER_COMMENT_FAIL = '[Comment] Alter comment fail';
 
-export const LIST_COMMENTS: string = '[Comment] List comments';
-export const LIST_COMMENTS_SUCCESS: string = '[Comment] List comments success';
-export const LIST_COMMENTS_FAIL: string = '[Comment] List comments fail';
+export const LIST_COMMENTS = '[Comment] List comments';
+export const LIST_COMMENTS_SUCCESS = '[Comment] List comments success';
+export const LIST_COMMENTS_FAIL = '[Comment] List comments fail';
+
+export const LIKE_COMMENT = '[Comment] Like comment';
+export const LIKE_COMMENT_SUCCESS = '[Comment] Like comment success';
+export const LIKE_COMMENT_FAIL = '[Comment] Like comment fail';
 
 export class CreateComment implements Action {
     readonly type = CREATE_COMMENT;
@@ -44,11 +49,28 @@ export class ListCommentsFail implements Action {
     readonly type = LIST_COMMENTS_FAIL;
 }
 
+export class LikeComment implements Action {
+    readonly type = LIKE_COMMENT;
+    constructor(public payload: number) {}
+}
+
+export class LikeCommentSuccess implements Action {
+    readonly type = LIKE_COMMENT_SUCCESS;
+    constructor(public payload: Comment) {}
+}
+
+export class LikeCommentFail implements Action {
+    readonly type = LIKE_COMMENT_FAIL;
+}
+
 export type CommentActionsUnion =
-    CreateComment |
-    UpdateComment |
-    AlterCommentSuccess |
-    AlterCommentFail |
-    ListComments |
-    ListCommentsSuccess |
-    ListCommentsFail;
+    | CreateComment
+    | UpdateComment
+    | AlterCommentSuccess
+    | AlterCommentFail
+    | ListComments
+    | ListCommentsSuccess
+    | ListCommentsFail
+    | LikeComment
+    | LikeCommentSuccess
+    | LikeCommentFail;

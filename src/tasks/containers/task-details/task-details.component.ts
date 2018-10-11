@@ -17,10 +17,11 @@ import { Comment, emptyComment } from '../../models/comment.model';
     <h2>{{ (task$ | async).name }}</h2>
     <div class="comment-list">
       <h3>Kommentit:</h3>
-      <!-- <task-comment *ngFor="let comment of (task$ | async).comments"
-        [comment]="comment"></task-comment> -->
+      <task-comment *ngFor="let comment of (comments$ | async)"
+        (click)="likeComment(comment)"
+        [comment]="comment"></task-comment>
     </div>
-    <!-- <div *ngIf="!((task$ | async).comments)">Ei kommentteja tehtävällä</div> -->
+    <div *ngIf="!((comments$ | async).length)">Ei kommentteja tehtävällä</div>
     <comment-form
       [comment]="newComment"
       (submit)="submitComment($event)"></comment-form>
@@ -28,22 +29,28 @@ import { Comment, emptyComment } from '../../models/comment.model';
 })
 
 export class TaskDetailsComponent {
+  private taskId: number;
   private task$: Observable<Task>;
+  private comments$: Observable<Comment[]>;
 
   public newComment: Comment = emptyComment();
 
   constructor(private store: Store<fromStore.TaskModuleState>, private route: ActivatedRoute) {
     this.task$ = this.store.pipe(select(fromStore.getSelectedTask));
-    // TODO:
-    // this.comments$ = this.store.pipe(select(getComments()));
+    this.comments$ = this.store.pipe(select(fromStore.getComments));
 
-    const taskId: number = parseInt(this.route.snapshot.paramMap.get('taskId'));
-    this.store.dispatch(new fromActions.GetTask(taskId));
+    this.taskId = parseInt(this.route.snapshot.paramMap.get('taskId'));
+    this.store.dispatch(new fromActions.GetTask(this.taskId));
+    this.store.dispatch(new fromActions.ListComments(this.taskId));
   }
 
   submitComment(): void {
-    console.log('comment', this.newComment);
     this.task$.subscribe((task: Task) => this.newComment.task = task.id);
+    this.store.dispatch(new fromActions.CreateComment(this.newComment));
     this.newComment = emptyComment();
+  }
+
+  likeComment(comment: Comment): void {
+    this.store.dispatch(new fromActions.UpdateComment({ ...comment, likes: comment.likes + 1 }));
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { Comment } from '../models/comment.model';
-import { filter } from "rxjs/operators";
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class CommentService {
@@ -19,6 +19,8 @@ export class CommentService {
     }
 
     listCommentsForTask(id: number): Observable<Comment[]> {
-        return this.http.get<Comment[]>(this.url).pipe(filter((comment: Comment) => comment.task === id))
+        return this.http.get<Comment[]>(this.url).pipe(
+            map((comments: Comment[]) => comments.filter((comment: Comment) => comment.task === id))
+        );
     }
 }

@@ -89,16 +89,16 @@ export class CreateTaskFail implements Action {
 }
 
 export type TaskActionsUnion =
-    ListTasks |
-    ListTasksSuccess |
-    ListTasksFail |
-    RemoveTask |
-    RemoveTaskSuccess |
-    RemoveTaskFail |
-    SelectTask |
-    GetTask |
-    GetTaskSuccess |
-    GetTaskFail |
-    CreateTask |
-    CreateTaskSuccess |
-    CreateTaskFail;
+    | ListTasks
+    | ListTasksSuccess
+    | ListTasksFail
+    | RemoveTask
+    | RemoveTaskSuccess
+    | RemoveTaskFail
+    | SelectTask
+    | GetTask
+    | GetTaskSuccess
+    | GetTaskFail
+    | CreateTask
+    | CreateTaskSuccess
+    | CreateTaskFail;
