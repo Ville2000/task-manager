@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { Comment } from '../models/comment.model';
+import { filter } from "rxjs/operators";
 
 @Injectable()
 export class CommentService {
@@ -15,5 +16,9 @@ export class CommentService {
 
     updateComment(comment: Comment): Observable<any> {
         return this.http.put(`${this.url}/${comment.id}`, comment);
+    }
+
+    listCommentsForTask(id: number): Observable<Comment[]> {
+        return this.http.get<Comment[]>(this.url).pipe(filter((comment: Comment) => comment.task === id))
     }
 }

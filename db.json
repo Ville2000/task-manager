@@ -5,50 +5,21 @@
       "name": "Kirjoita raportti",
       "creator": "Ville",
       "done": false,
-      "date": "1538082000000",
-      "comments": [
-        {
-          "id": 1,
-          "task": 1,
-          "comment": "Pitikö raportin kirjoittamisesta muistaa jotain?",
-          "commentor": "Mauri",
-          "date": "1538219962092",
-          "likes": 1
-        },
-        {
-          "id": 2,
-          "task": 1,
-          "comment": "Riviväli 1,5!",
-          "commentor": "Ville",
-          "date": "1538219962092",
-          "likes": 2
-        }
-      ]
+      "date": "1538082000000"
     },
     {
       "id": 2,
       "name": "Palauta raportti",
       "creator": "Ville",
       "done": false,
-      "date": "1538082000000",
-      "comments": []
+      "date": "1538082000000"
     },
     {
       "id": 3,
       "name": "Tapaa opettaja",
       "creator": "Ville",
       "done": false,
-      "date": "1538082000000",
-      "comments": [
-        {
-          "id": 3,
-          "task": 3,
-          "comment": "Kenet tapaat?",
-          "commentor": "Mauri",
-          "date": "1538219962092",
-          "likes": 0
-        }
-      ]
+      "date": "1538082000000"
     }
   ],
   "comments": [

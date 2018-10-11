@@ -7,6 +7,7 @@ import { TaskState, getAllTasks } from '../../store/reducers/task.reducer';
 import { Component } from "@angular/core";
 import { Task, emptyTask } from "../../models/task.model";
 import * as fromActions from '../../store/actions';
+import * as fromStore from '../../store';
 
 @Component({
   styleUrls: ['./task-list.component.css'],
@@ -31,7 +32,7 @@ export class TaskListComponent {
   public newTask: Task = emptyTask();
 
   constructor(private store: Store<TaskState>, private router: Router) {
-    this.tasks$ = this.store.pipe(select(getAllTasks));
+    this.tasks$ = this.store.pipe(select(fromStore.getTasks));
     this.store.dispatch(new fromActions.ListTasks());
   }
 

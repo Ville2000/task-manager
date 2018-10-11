@@ -6,7 +6,6 @@ import { Task } from "../../models/task.model";
   styleUrls: ['./task.component.css'],
   template: `
     <div class="task__name">{{ task.name }}</div>
-    <div class="task__comments">{{ task.comments.length }}</div>
     <button class="task__remove-btn" (click)="removeTask($event, task.id)">x</button>
   `
 })

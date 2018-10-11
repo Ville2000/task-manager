@@ -4,10 +4,8 @@ import { StoreModule } from '@ngrx/store';
 import { SharedModule } from '../shared/shared.module'
 
 import { EffectsModule } from '@ngrx/effects';
-import { TaskEffects } from './store/effects/task.effects';
 
-import { reducer } from './store/reducers/task.reducer';
-
+import * as fromStore from './store';
 import * as fromContainers from './containers';
 import * as fromComponents from './components';
 import * as fromServices from './services';
@@ -27,8 +25,8 @@ const ROUTES: Routes = [
   imports: [
     SharedModule,
     RouterModule.forChild(ROUTES),
-    StoreModule.forFeature('tasks', reducer),
-    EffectsModule.forFeature([ TaskEffects ])
+    StoreModule.forFeature('tasksState', fromStore.reducers),
+    EffectsModule.forFeature(fromStore.effects)
   ],
   declarations: [
     ...fromContainers.containers,
