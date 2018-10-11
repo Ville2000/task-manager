@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { Router } from '@angular/router';
 
-import { TaskState, selectAllTasks } from '../../store/reducers/task.reducer';
+import { TaskState, getAllTasks } from '../../store/reducers/task.reducer';
 import { Component } from "@angular/core";
 import { Task, emptyTask } from "../../models/task.model";
 import * as fromActions from '../../store/actions';
@@ -15,13 +15,6 @@ import * as fromActions from '../../store/actions';
     <div *ngIf="!((tasks$ | async).length)">
       Ei tehtäviä tehtävälistalla
     </div>
-    <!-- <div *ngFor="let task of tasks$ | async; let odd = odd; let even = even;">
-      <task class="task-list__task"
-        [ngClass]="{ odd: odd, even: even }"
-        [task]="task"
-        (remove)="removeTask($event)"
-        (click)="selectTask(task.id)"></task>
-    </div> -->
     <task *ngFor="let task of tasks$ | async; let odd = odd; let even = even;"
       [ngClass]="{ odd: odd, even: even }"
       [task]="task"
@@ -38,16 +31,16 @@ export class TaskListComponent {
   public newTask: Task = emptyTask();
 
   constructor(private store: Store<TaskState>, private router: Router) {
-    this.tasks$ = this.store.pipe(select(selectAllTasks));
-    this.store.dispatch(new fromActions.LoadTasks());
+    this.tasks$ = this.store.pipe(select(getAllTasks));
+    this.store.dispatch(new fromActions.ListTasks());
   }
 
   addTask(): void {
-    this.store.dispatch(new fromActions.AddTask({ ...this.newTask }));
+    this.store.dispatch(new fromActions.CreateTask({ ...this.newTask }));
     this.newTask = emptyTask();
   }
 
-  removeTask(id: number): void {
+  removeTask(id): void {
     this.store.dispatch(new fromActions.RemoveTask(id));
   }
 

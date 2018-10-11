@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Store, select } from "@ngrx/store";
 import { Observable } from 'rxjs';
 
@@ -10,6 +10,7 @@ import * as fromActions from '../../store/actions';
 import { Task } from '../../models/task.model'
 import { Comment, emptyComment } from '../../models/comment.model';
 
+// FIXME: Cannot read property 'comments' of null.
 @Component({
   styleUrls: ['./task-details.component.css'],
   template: `
@@ -18,8 +19,8 @@ import { Comment, emptyComment } from '../../models/comment.model';
       <h3>Kommentit:</h3>
       <task-comment *ngFor="let comment of (task$ | async).comments"
         [comment]="comment"></task-comment>
-      <div *ngIf="!((task$ | async).comments.length)">Ei kommentteja tehtävällä</div>
     </div>
+    <div *ngIf="!(task$ | async) || !((task$ | async).comments.length)">Ei kommentteja tehtävällä</div>
     <comment-form
       [comment]="newComment"
       (submit)="submitComment($event)"></comment-form>
@@ -32,8 +33,9 @@ export class TaskDetailsComponent {
   public newComment: Comment = emptyComment();
 
   constructor(private store: Store<fromReducers.TaskState>, private route: ActivatedRoute) {
+    this.task$ = this.store.pipe(select(fromStore.getSelectedTask));
+
     const taskId: number = parseInt(this.route.snapshot.paramMap.get('taskId'));
-    this.task$ = this.store.pipe(select(fromStore.selectSelectedTask));
     this.store.dispatch(new fromActions.GetTask(taskId));
   }
 

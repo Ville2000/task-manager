@@ -19,16 +19,15 @@ export class TaskEffects {
     // Kuunnellaan moduulin kautta
     @Effect()
     listTasks$: Observable<Action> = this.actions$.pipe(
-        ofType(fromActions.LOAD_TASKS),
-        mergeMap((action: fromActions.LoadTasks) =>
+        ofType(fromActions.LIST_TASKS),
+        mergeMap((action: fromActions.ListTasks) =>
             this.taskService.listTasks().pipe(
-                map((tasks: Task[]) => (new fromActions.LoadTasksSuccess(tasks))),
-                catchError(() => of(new fromActions.LoadTasksFail()))
+                map((tasks: Task[]) => (new fromActions.ListTasksSuccess(tasks))),
+                catchError(() => of(new fromActions.ListTasksFail()))
             )
         )
     );
 
-    // TODO: Hae by id
     @Effect()
     loadTaskById$: Observable<Action> = this.actions$.pipe(
         ofType(fromActions.GET_TASK),
@@ -38,6 +37,28 @@ export class TaskEffects {
                 map((task: Task) => (new fromActions.GetTaskSuccess(task))),
                 // Jos fail, dispatch fail
                 catchError(() => of(new fromActions.GetTaskFail()))
+            )
+        )
+    );
+
+    @Effect()
+    createTask$: Observable<Action> = this.actions$.pipe(
+        ofType(fromActions.CREATE_TASK),
+        mergeMap((action: fromActions.CreateTask) =>
+            this.taskService.createTask(action.payload).pipe(
+                map((task: Task) => (new fromActions.CreateTaskSuccess(task))),
+                catchError(() => of(new fromActions.CreateTaskFail()))
+            )
+        )
+    );
+
+    @Effect()
+    removeTask$: Observable<Action> = this.actions$.pipe(
+        ofType(fromActions.REMOVE_TASK),
+        mergeMap((action: fromActions.RemoveTask) =>
+            this.taskService.removeTask(action.payload).pipe(
+                map((task: Task) => (new fromActions.RemoveTaskSuccess(task))),
+                catchError(() => of (new fromActions.RemoveTaskFail()))
             )
         )
     );

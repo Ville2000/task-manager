@@ -1,7 +1,8 @@
-import { Task } from './../../models/task.model';
-import * as fromActions from '../actions';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AppState } from '../../../app/app.module';
+
+import * as fromActions from '../actions';
+import { Task } from './../../models/task.model';
 
 export interface TaskState {
     tasks: Task[];
@@ -19,29 +20,17 @@ export const initialState: TaskState = {
 
 export function reducer(state: TaskState = initialState, action: fromActions.TaskActionsUnion): TaskState {
   switch (action.type) {
-    case fromActions.LOAD_TASKS: {
+    case fromActions.LIST_TASKS: {
         return { ...state, loading: true, loaded: false };
     }
 
-    case fromActions.LOAD_TASKS_SUCCESS: {
+    case fromActions.LIST_TASKS_SUCCESS: {
         const tasks: Task[] = action.payload;
         return { ...state, loading: false, loaded: true, tasks };
     }
 
-    case fromActions.LOAD_TASKS_FAIL: {
+    case fromActions.LIST_TASKS_FAIL: {
         return { ...state, loading: false, loaded: false};
-    }
-
-    case fromActions.ADD_TASK: {
-        const id = state.tasks.reduce((t1: Task, t2: Task): any => t1.id > t2.id ? t1.id : t2.id, 0);
-        action.payload.id = id + 1;
-        const tasks = state.tasks.concat(action.payload);
-        return { ...state, tasks };
-    }
-
-    case fromActions.REMOVE_TASK: {
-        const tasks = state.tasks.filter((task: Task) => task.id != action.payload);
-        return { ...state, tasks };
     }
 
     case fromActions.SELECT_TASK: {
@@ -58,12 +47,32 @@ export function reducer(state: TaskState = initialState, action: fromActions.Tas
         return state;
     }
 
+    case fromActions.CREATE_TASK_SUCCESS: {
+        const selectedTask: Task = action.payload;
+        const tasks = state.tasks.concat(selectedTask);
+        return { ...state, tasks, selectedTask};
+    }
+
+    case fromActions.CREATE_TASK_FAIL: {
+        return state;
+    }
+
+    case fromActions.REMOVE_TASK_SUCCESS: {
+        const selectedTask = state.selectedTask && state.selectedTask.id === action.payload.id ? null : state.selectedTask;
+        
+        return { ...state, selectedTask };
+    }
+
+    case fromActions.REMOVE_TASK_FAIL: {
+        return state;
+    }
+
     default: {
         return state;
     }
   }
 }
 
-export const selectTasks = createFeatureSelector<AppState, TaskState>('tasks');
-export const selectAllTasks = createSelector(selectTasks, (state: TaskState) => state.tasks);
-export const selectSelectedTask = createSelector(selectTasks, (state: TaskState) => state.selectedTask);
+export const getTasks = createFeatureSelector<AppState, TaskState>('tasks');
+export const getAllTasks = createSelector(getTasks, (state: TaskState) => state.tasks);
+export const getSelectedTask = createSelector(getTasks, (state: TaskState) => state.selectedTask);

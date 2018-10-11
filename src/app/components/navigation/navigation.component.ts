@@ -5,7 +5,7 @@ import { Component } from "@angular/core";
     styleUrls: ['./navigation.component.css'],
     template: `
         <h1>Tehtävämanageri</h1>
-        <a href="#">Tehtävälista</a>
+        <a routerLink="/">Tehtävälista</a>
     `
 })
 

@@ -49,22 +49,6 @@
           "likes": 0
         }
       ]
-    },
-    {
-      "id": 4,
-      "name": "Korjaa luku 2",
-      "creator": "Ville",
-      "done": false,
-      "date": "1538219962092",
-      "comments": []
-    },
-    {
-      "id": 5,
-      "name": "Lisää kuvat lukuun 4",
-      "creator": "Ville",
-      "done": false,
-      "date": "1538219962092",
-      "comments": []
     }
   ],
   "comments": [
