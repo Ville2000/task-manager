@@ -1,7 +1,3 @@
-import * as fromRoot from '../../../app/store';
-
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-
 import * as fromActions from '../actions';
 import { Task } from './../../models/task.model';
 
@@ -32,20 +28,6 @@ export function reducer(state: TaskState = initialState, action: fromActions.Tas
 
     case fromActions.LIST_TASKS_FAIL: {
         return { ...state, loading: false, loaded: false};
-    }
-
-    case fromActions.SELECT_TASK: {
-        const selectedTask: Task = state.tasks.find((task: Task) => task.id === action.payload);
-        return { ...state, selectedTask };
-    }
-
-    case fromActions.GET_TASK_SUCCESS: {
-        const selectedTask: Task = action.payload;
-        return { ...state, selectedTask };
-    }
-
-    case fromActions.GET_TASK_FAIL: {
-        return state;
     }
 
     case fromActions.CREATE_TASK_SUCCESS: {

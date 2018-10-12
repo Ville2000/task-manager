@@ -30,6 +30,7 @@ const ROUTES: Routes = [
   }
 ]
 
+// TODO: Meta-reducers
 @NgModule({
   declarations: [
     ...fromContainers.containers,
@@ -39,14 +40,19 @@ const ROUTES: Routes = [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
     StoreModule.forRoot(fromStore.reducers),
-    StoreRouterConnectingModule.forRoot(),
+    StoreRouterConnectingModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
     }),
     EffectsModule.forRoot([])
   ],
-  providers: [{ provide: RouterStateSerializer, useClass: fromStore.CustomRouteSerializer}],
+  providers: [
+    {
+      provide: RouterStateSerializer,
+      useClass: fromStore.CustomRouteSerializer
+    }
+  ],
   bootstrap: [fromContainers.AppComponent]
 })
 export class AppModule { }

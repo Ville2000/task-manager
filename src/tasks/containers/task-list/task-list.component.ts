@@ -20,7 +20,7 @@ import * as fromStore from '../../store';
       [ngClass]="{ odd: odd, even: even }"
       [task]="task"
       (remove)="removeTask($event)"
-      (click)="selectTask(task.id)"></task>
+      [routerLink]="['/tasks', task.id]"></task>
     <task-form class="task-list__form"
       [task]="newTask"
       (submit)="addTask()"></task-form>
@@ -43,10 +43,5 @@ export class TaskListComponent {
 
   removeTask(id): void {
     this.store.dispatch(new fromActions.RemoveTask(id));
-  }
-
-  selectTask(id: number): void {
-    this.store.dispatch(new fromActions.SelectTask(id));
-    this.router.navigate([`/tasks/${id}`]);
   }
 }

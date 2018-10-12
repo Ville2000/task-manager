@@ -9,6 +9,7 @@ import * as fromStore from './store';
 import * as fromContainers from './containers';
 import * as fromComponents from './components';
 import * as fromServices from './services';
+import * as fromGuards from './guards';
 
 const ROUTES: Routes = [
   {
@@ -17,7 +18,8 @@ const ROUTES: Routes = [
   },
   {
     path: ':taskId',
-    component: fromContainers.TaskDetailsComponent
+    component: fromContainers.TaskDetailsComponent,
+    canActivate: [fromGuards.TaskGuard]
   }
 ]
 
@@ -33,7 +35,8 @@ const ROUTES: Routes = [
     ...fromComponents.components
   ],
   providers: [
-    ...fromServices.services
+    ...fromServices.services,
+    ...fromGuards.guards
   ],
   exports: []
 })

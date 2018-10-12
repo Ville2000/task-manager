@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { RouterStateSnapshot, Params } from '@angular/router';
 
-import { ActionReducerMap } from '@ngrx/store';
+import { ActionReducerMap, createFeatureSelector } from '@ngrx/store';
 import * as fromRouter from '@ngrx/router-store';
 
 
 export interface RouterState {
   url: string;
   queryParams: Params;
-  params: Params
+  params: Params;
 }
 
+// Sovelluksen root-state
 export interface State {
-  routes: fromRouter.RouterReducerState
+  route: fromRouter.RouterReducerState;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  routes: fromRouter.routerReducer
+  route: fromRouter.routerReducer
 }
 
 @Injectable()
@@ -39,3 +40,6 @@ export class CustomRouteSerializer implements fromRouter.RouterStateSerializer<R
     return { url, params, queryParams };
   }
 }
+
+export const getRouterState = createFeatureSelector<
+  fromRouter.RouterReducerState<RouterState>>('route');

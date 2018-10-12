@@ -49,13 +49,6 @@
           "likes": 0
         }
       ]
-    },
-    {
-      "name": "Syö välipala",
-      "done": false,
-      "date": "2018-10-11T11:01:16.394Z",
-      "creator": null,
-      "id": 4
     }
   ],
   "comments": [
@@ -93,7 +86,7 @@
     {
       "comment": "test",
       "date": 1539250215900,
-      "likes": 0,
+      "likes": 1,
       "task": 1,
       "id": 5
     },
@@ -110,6 +103,34 @@
       "likes": 1,
       "task": 4,
       "id": 7
+    },
+    {
+      "comment": "Kommentt",
+      "date": 1539334542876,
+      "likes": 0,
+      "task": 1,
+      "id": 8
+    },
+    {
+      "comment": "tet",
+      "date": 1539334578866,
+      "likes": 0,
+      "task": 1,
+      "id": 9
+    },
+    {
+      "comment": "tetst",
+      "date": 1539334921978,
+      "likes": 0,
+      "task": 1,
+      "id": 10
+    },
+    {
+      "comment": "Komment",
+      "date": 1539335025373,
+      "likes": 1,
+      "task": 1,
+      "id": 11
     }
   ]
 }

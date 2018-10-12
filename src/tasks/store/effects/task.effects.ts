@@ -29,19 +29,6 @@ export class TaskEffects {
     );
 
     @Effect()
-    loadTaskById$: Observable<Action> = this.actions$.pipe(
-        ofType(fromActions.GET_TASK),
-        mergeMap((action: fromActions.GetTask) =>
-            this.taskService.getTaskById(action.payload).pipe(
-                // Jos success, dispatch success
-                map((task: Task) => (new fromActions.GetTaskSuccess(task))),
-                // Jos fail, dispatch fail
-                catchError(() => of(new fromActions.GetTaskFail()))
-            )
-        )
-    );
-
-    @Effect()
     createTask$: Observable<Action> = this.actions$.pipe(
         ofType(fromActions.CREATE_TASK),
         mergeMap((action: fromActions.CreateTask) =>

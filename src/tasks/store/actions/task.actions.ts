@@ -10,12 +10,6 @@ export const REMOVE_TASK = '[Task] Remove task';
 export const REMOVE_TASK_SUCCESS = '[Task] Remove task success';
 export const REMOVE_TASK_FAIL = '[Task] Remove task fail';
 
-export const SELECT_TASK = '[Task] Select task';
-
-export const GET_TASK = '[Task] Get task';
-export const GET_TASK_SUCCESS = '[Task] Get task success';
-export const GET_TASK_FAIL = '[Task] Get task fail';
-
 export const CREATE_TASK = '[Task] Create task';
 export const CREATE_TASK_SUCCESS = '[Task] Create task success';
 export const CREATE_TASK_FAIL = '[Task] Create task fail';
@@ -55,25 +49,6 @@ export class RemoveTaskFail implements Action {
     readonly type = REMOVE_TASK_FAIL;
 }
 
-export class SelectTask implements Action {
-    readonly type = SELECT_TASK;
-    constructor(public payload: number) {}
-}
-
-export class GetTask implements Action {
-    readonly type = GET_TASK;
-    constructor(public payload: number) {}
-}
-
-export class GetTaskSuccess implements Action {
-    readonly type = GET_TASK_SUCCESS;
-    constructor(public payload: Task) {}
-}
-
-export class GetTaskFail implements Action {
-    readonly type = GET_TASK_FAIL;
-}
-
 export class CreateTask implements Action {
     readonly type = CREATE_TASK;
     constructor(public payload: Task) {}
@@ -95,10 +70,6 @@ export type TaskActionsUnion =
     | RemoveTask
     | RemoveTaskSuccess
     | RemoveTaskFail
-    | SelectTask
-    | GetTask
-    | GetTaskSuccess
-    | GetTaskFail
     | CreateTask
     | CreateTaskSuccess
     | CreateTaskFail;
