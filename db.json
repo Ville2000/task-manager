@@ -92,6 +92,13 @@
       "likes": 2,
       "task": 4,
       "id": 12
+    },
+    {
+      "comment": "Korjaa esimerkkisovellus!",
+      "date": 1539339246214,
+      "likes": 2,
+      "task": 4,
+      "id": 13
     }
   ]
 }
