@@ -20,6 +20,13 @@
       "creator": "Ville",
       "done": false,
       "date": 1538082000000
+    },
+    {
+      "name": "Tee opinnäytetyö",
+      "done": false,
+      "date": "2018-10-12T09:53:39.184Z",
+      "creator": null,
+      "id": 4
     }
   ],
   "comments": [
@@ -78,6 +85,13 @@
       "likes": 2,
       "task": 1,
       "id": 11
+    },
+    {
+      "comment": "Tee enemmän opinnäytetyötä!",
+      "date": 1539338029116,
+      "likes": 2,
+      "task": 4,
+      "id": 12
     }
   ]
 }

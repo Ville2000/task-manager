@@ -44,7 +44,7 @@ export class TaskEffects {
         ofType(fromActions.REMOVE_TASK),
         mergeMap((action: fromActions.RemoveTask) =>
             this.taskService.removeTask(action.payload).pipe(
-                map((task: Task) => (new fromActions.RemoveTaskSuccess(task))),
+                map(() => (new fromActions.RemoveTaskSuccess(action.payload))),
                 catchError(() => of (new fromActions.RemoveTaskFail()))
             )
         )

@@ -13,7 +13,7 @@ export const getTaskState = createSelector(
 
 export const getTasks = createSelector(
     getTaskState,
-    (state: fromTasks.TaskState) => state.tasks
+    (state: fromTasks.TaskState) => state.entities
 );
 
 export const getSelectedTask = createSelector(

@@ -42,7 +42,7 @@ export class RemoveTask implements Action {
 
 export class RemoveTaskSuccess implements Action {
     readonly type = REMOVE_TASK_SUCCESS;
-    constructor(public payload: Task) {}
+    constructor(public payload: number) {}
 }
 
 export class RemoveTaskFail implements Action {

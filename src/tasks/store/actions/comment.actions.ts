@@ -12,10 +12,6 @@ export const LIST_COMMENTS = '[Comment] List comments';
 export const LIST_COMMENTS_SUCCESS = '[Comment] List comments success';
 export const LIST_COMMENTS_FAIL = '[Comment] List comments fail';
 
-export const LIKE_COMMENT = '[Comment] Like comment';
-export const LIKE_COMMENT_SUCCESS = '[Comment] Like comment success';
-export const LIKE_COMMENT_FAIL = '[Comment] Like comment fail';
-
 export class CreateComment implements Action {
     readonly type = CREATE_COMMENT;
     constructor(public payload: Comment) {}
@@ -49,20 +45,6 @@ export class ListCommentsFail implements Action {
     readonly type = LIST_COMMENTS_FAIL;
 }
 
-export class LikeComment implements Action {
-    readonly type = LIKE_COMMENT;
-    constructor(public payload: number) {}
-}
-
-export class LikeCommentSuccess implements Action {
-    readonly type = LIKE_COMMENT_SUCCESS;
-    constructor(public payload: Comment) {}
-}
-
-export class LikeCommentFail implements Action {
-    readonly type = LIKE_COMMENT_FAIL;
-}
-
 export type CommentActionsUnion =
     | CreateComment
     | UpdateComment
@@ -70,7 +52,4 @@ export type CommentActionsUnion =
     | AlterCommentFail
     | ListComments
     | ListCommentsSuccess
-    | ListCommentsFail
-    | LikeComment
-    | LikeCommentSuccess
-    | LikeCommentFail;
+    | ListCommentsFail;

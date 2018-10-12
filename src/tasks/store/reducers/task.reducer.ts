@@ -2,17 +2,15 @@ import * as fromActions from '../actions';
 import { Task } from './../../models/task.model';
 
 export interface TaskState {
-    tasks: Task[];
+    entities: Task[];
     loading: boolean;
     loaded: boolean;
-    selectedTask: Task;
 }
 
 export const initialState: TaskState = {
-    tasks: [],
+    entities: [],
     loading: false,
     loaded: false,
-    selectedTask: null
 }
 
 export function reducer(state: TaskState = initialState, action: fromActions.TaskActionsUnion): TaskState {
@@ -22,8 +20,8 @@ export function reducer(state: TaskState = initialState, action: fromActions.Tas
     }
 
     case fromActions.LIST_TASKS_SUCCESS: {
-        const tasks: Task[] = action.payload;
-        return { ...state, loading: false, loaded: true, tasks };
+        const entities: Task[] = action.payload;
+        return { ...state, loading: false, loaded: true, entities };
     }
 
     case fromActions.LIST_TASKS_FAIL: {
@@ -31,25 +29,18 @@ export function reducer(state: TaskState = initialState, action: fromActions.Tas
     }
 
     case fromActions.CREATE_TASK_SUCCESS: {
-        const selectedTask: Task = action.payload;
-        const tasks = state.tasks.concat(selectedTask);
-        return { ...state, tasks, selectedTask};
-    }
-
-    case fromActions.CREATE_TASK_FAIL: {
-        return state;
+        const entities = state.entities.concat(action.payload);
+        return { ...state, entities };
     }
 
     case fromActions.REMOVE_TASK_SUCCESS: {
-        const selectedTask = state.selectedTask && state.selectedTask.id === action.payload.id ? null : state.selectedTask;
-        
-        return { ...state, selectedTask };
+        const entities = state.entities.filter((entity: Task) => entity.id !== action.payload);
+        console.log('action.payload', action.payload, entities);
+        return { ...state, entities };
     }
 
-    case fromActions.REMOVE_TASK_FAIL: {
-        return state;
-    }
-
+    case fromActions.CREATE_TASK_FAIL:
+    case fromActions.REMOVE_TASK_FAIL:
     default: {
         return state;
     }

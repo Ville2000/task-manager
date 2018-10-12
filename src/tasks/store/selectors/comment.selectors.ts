@@ -10,5 +10,5 @@ export const getCommentState = createSelector(
 
 export const getComments = createSelector(
     getCommentState,
-    (state: fromComments.CommentState) => state.comments
+    (state: fromComments.CommentState) => state.entities
 );

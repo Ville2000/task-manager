@@ -3,11 +3,11 @@ import { CommentActionsUnion } from '../actions/comment.actions';
 import { Comment } from '../../models/comment.model';
 
 export interface CommentState {
-    comments: Comment[]
+    entities: Comment[]
 }
 
 export const initialState: CommentState = {
-    comments: []
+    entities: []
 }
 
 export function reducer(
@@ -15,31 +15,20 @@ export function reducer(
     action: CommentActionsUnion
     ): CommentState {
     switch(action.type) {
+        case fromActions.LIST_COMMENTS_SUCCESS: {
+            const entities: Comment[] = action.payload;
+            return { ...state, entities };
+        }
+
         case fromActions.ALTER_COMMENT_SUCCESS: {
             const comment: Comment = action.payload;
-            const comments = state.comments
+            const entities = state.entities
                 .filter(comment => comment.id !== action.payload.id)
                 .concat(comment);
-            return { ...state, comments};
+            return { ...state, entities};
         }
-
-        case fromActions.ALTER_COMMENT_FAIL: {
-            return state;
-        }
-
-        case fromActions.LIST_COMMENTS_SUCCESS: {
-            const comments: Comment[] = action.payload;
-            return { ...state, comments };
-        }
-
-        case fromActions.LIKE_COMMENT_SUCCESS: {
-            return state;
-        }
-
-        case fromActions.LIKE_COMMENT_FAIL: {
-            return state;
-        }
-
+        
+        case fromActions.ALTER_COMMENT_FAIL:
         default: {
             return state;
         }

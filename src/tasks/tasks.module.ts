@@ -14,6 +14,7 @@ import * as fromGuards from './guards';
 const ROUTES: Routes = [
   {
     path: '',
+    // TODO: Guardi, joka estää listan lataamisen yhä uudelleen
     component: fromContainers.TaskListComponent,
   },
   {
