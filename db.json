@@ -5,25 +5,7 @@
       "name": "Kirjoita raportti",
       "creator": "Ville",
       "done": false,
-      "date": "1538082000000",
-      "comments": [
-        {
-          "id": 1,
-          "task": 1,
-          "comment": "Pitikö raportin kirjoittamisesta muistaa jotain?",
-          "commentor": "Mauri",
-          "date": "1538219962092",
-          "likes": 1
-        },
-        {
-          "id": 2,
-          "task": 1,
-          "comment": "Riviväli 1,5!",
-          "commentor": "Ville",
-          "date": "1538219962092",
-          "likes": 2
-        }
-      ]
+      "date": "1538082000000"
     },
     {
       "id": 2,
@@ -39,46 +21,12 @@
       "creator": "Ville",
       "done": false,
       "date": "1538082000000",
-      "comments": [
-        {
-          "id": 3,
-          "task": 3,
-          "comment": "Kenet tapaat?",
-          "commentor": "Mauri",
-          "date": "1538219962092",
-          "likes": 0
-        }
-      ]
     }
   ],
   "comments": [
     {
-      "id": 1,
-      "task": 1,
-      "comment": "Pitikö raportin kirjoittamisesta muistaa jotain?",
-      "commentor": "Mauri",
-      "date": "1538219962092",
-      "likes": 1
-    },
-    {
-      "id": 2,
-      "task": 1,
-      "comment": "Riviväli 1,5!",
-      "commentor": "Ville",
-      "date": "1538219962092",
-      "likes": 2
-    },
-    {
-      "id": 3,
-      "task": 3,
-      "comment": "Kenet tapaat?",
-      "commentor": "Mauri",
-      "date": "1538219962092",
-      "likes": 2
-    },
-    {
       "comment": "Kom",
-      "date": "2018-10-11T09:19:51.610Z",
+      "date": 1539250215900,
       "likes": 0,
       "task": 1,
       "id": 4
@@ -93,12 +41,12 @@
     {
       "comment": "Sainion",
       "date": 1539253341918,
-      "likes": 3,
+      "likes": 4,
       "task": 3,
       "id": 6
     },
     {
-      "comment": "No syöhän nyt!\n",
+      "comment": "No syöhän nyt!",
       "date": 1539255732115,
       "likes": 1,
       "task": 4,
@@ -128,7 +76,7 @@
     {
       "comment": "Komment",
       "date": 1539335025373,
-      "likes": 1,
+      "likes": 2,
       "task": 1,
       "id": 11
     }
