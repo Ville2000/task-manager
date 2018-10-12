@@ -5,22 +5,21 @@
       "name": "Kirjoita raportti",
       "creator": "Ville",
       "done": false,
-      "date": "1538082000000"
+      "date": 1538082000000
     },
     {
       "id": 2,
       "name": "Palauta raportti",
       "creator": "Ville",
       "done": false,
-      "date": "1538082000000",
-      "comments": []
+      "date": 1538082000000
     },
     {
       "id": 3,
       "name": "Tapaa opettaja",
       "creator": "Ville",
       "done": false,
-      "date": "1538082000000",
+      "date": 1538082000000
     }
   ],
   "comments": [
