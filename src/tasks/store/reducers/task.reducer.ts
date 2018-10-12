@@ -1,5 +1,6 @@
+import * as fromRoot from '../../../app/store';
+
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { AppState } from '../../../app/app.module';
 
 import * as fromActions from '../actions';
 import { Task } from './../../models/task.model';
@@ -73,6 +74,7 @@ export function reducer(state: TaskState = initialState, action: fromActions.Tas
   }
 }
 
-export const getTasks = createFeatureSelector<AppState, TaskState>('tasks');
-export const getAllTasks = createSelector(getTasks, (state: TaskState) => state.tasks);
-export const getSelectedTask = createSelector(getTasks, (state: TaskState) => state.selectedTask);
+/** TODO: Näitä funktioita voisi käyttää selektoreissa.
+    Kirjoitan selektoreissa nämä funktiot uudelleen. */
+// export const getAllTasks = (state: TaskState) => state.tasks;
+// export const getSelectedTask = (state: TaskState) => state.selectedTask;

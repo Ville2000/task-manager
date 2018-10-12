@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { Router } from '@angular/router';
 
-import { TaskState, getAllTasks } from '../../store/reducers/task.reducer';
+import { TaskState } from '../../store/reducers/task.reducer';
 import { Component } from "@angular/core";
 import { Task, emptyTask } from "../../models/task.model";
 import * as fromActions from '../../store/actions';

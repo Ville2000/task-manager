@@ -25,7 +25,7 @@ const ROUTES: Routes = [
   imports: [
     SharedModule,
     RouterModule.forChild(ROUTES),
-    StoreModule.forFeature('tasksState', fromStore.reducers),
+    StoreModule.forFeature('tasks', fromStore.reducers),
     EffectsModule.forFeature(fromStore.effects)
   ],
   declarations: [

@@ -2,30 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { StoreModule, ActionReducerMap } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule, routerReducer, RouterReducerState, RouterStateSerializer } from '@ngrx/router-store';
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 
 import { environment } from '../../environments/environment';
 
 import { TasksModule } from '../tasks/tasks.module';
-import { TaskState, reducer } from '../tasks/store/reducers/task.reducer';
 import * as fromContainers from './containers';
 import * as fromComponents from './components';
+import * as fromStore from './store';
 
-import { CustomRouteSerializer } from './router-state';
-
-
-export interface AppState {
-  tasks: TaskState;
-  router: RouterReducerState
-}
-
-const reducers: ActionReducerMap<AppState> = {
-  tasks: reducer,
-  router: routerReducer
-}
 
 const ROUTES: Routes = [
   {
@@ -50,7 +38,7 @@ const ROUTES: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(fromStore.reducers),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
@@ -58,7 +46,7 @@ const ROUTES: Routes = [
     }),
     EffectsModule.forRoot([])
   ],
-  providers: [],
+  providers: [{ provide: RouterStateSerializer, useClass: fromStore.CustomRouteSerializer}],
   bootstrap: [fromContainers.AppComponent]
 })
 export class AppModule { }
