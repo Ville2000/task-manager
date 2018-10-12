@@ -33,7 +33,7 @@ export class TaskDetailsComponent {
   public newComment: Comment = emptyComment();
 
   constructor(
-    private store: Store<fromStore.TaskModuleState>,
+    private store: Store<fromStore.State>,
     private route: ActivatedRoute
   ) {
     this.task$ = this.store.pipe(select(fromStore.getSelectedTask));

@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 
 import { Router } from '@angular/router';
 
-import { TaskState } from '../../store/reducers/task.reducer';
 import { Component } from "@angular/core";
 import { Task, emptyTask } from "../../models/task.model";
 import * as fromActions from '../../store/actions';
@@ -31,7 +30,7 @@ export class TaskListComponent {
   private tasks$: Observable<Task[]>;
   public newTask: Task = emptyTask();
 
-  constructor(private store: Store<TaskState>, private router: Router) {
+  constructor(private store: Store<fromStore.State>, private router: Router) {
     this.tasks$ = this.store.pipe(select(fromStore.getTasks));
     this.store.dispatch(new fromActions.ListTasks());
   }

@@ -2,18 +2,18 @@ import * as fromActions from '../actions/comment.actions';
 import { CommentActionsUnion } from '../actions/comment.actions';
 import { Comment } from '../../models/comment.model';
 
-export interface CommentState {
+export interface State {
     entities: Comment[]
 }
 
-export const initialState: CommentState = {
+export const initialState: State = {
     entities: []
 }
 
 export function reducer(
-    state: CommentState = initialState,
+    state: State = initialState,
     action: CommentActionsUnion
-    ): CommentState {
+    ): State {
     switch(action.type) {
         case fromActions.LIST_COMMENTS_SUCCESS: {
             const entities: Comment[] = action.payload;

@@ -2,14 +2,14 @@ import * as fromTasks from './task.reducer';
 import * as fromComments from './comment.reducer';
 import { ActionReducerMap, createFeatureSelector } from '@ngrx/store';
 
-export interface TaskModuleState {
-    tasks: fromTasks.TaskState;
-    comments: fromComments.CommentState;
+export interface State {
+    tasks: fromTasks.State;
+    comments: fromComments.State;
 }
 
-export const reducers: ActionReducerMap<TaskModuleState> = {
+export const reducers: ActionReducerMap<State> = {
     tasks: fromTasks.reducer,
     comments: fromComments.reducer
 }
 
-export const getTaskModuleState = createFeatureSelector<TaskModuleState>('tasks');
+export const getTaskModuleState = createFeatureSelector<State>('tasks');

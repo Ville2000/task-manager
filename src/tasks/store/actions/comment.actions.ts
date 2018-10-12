@@ -2,7 +2,6 @@ import { Action } from "@ngrx/store";
 
 import { Comment } from '../../models/comment.model';
 
-// Älä määritä action constantteja stringeiksi! Muuten tulee jostain syystä error reducerissa
 export const CREATE_COMMENT = '[Comment] Create comment';
 export const UPDATE_COMMENT = '[Comment] Update comment';
 export const ALTER_COMMENT_SUCCESS = '[Comment] Alter comment success';

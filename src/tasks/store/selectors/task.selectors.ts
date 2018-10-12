@@ -8,12 +8,12 @@ import { Task } from '../../models/task.model';
 
 export const getTaskState = createSelector(
     fromFeature.getTaskModuleState,
-    (state: fromFeature.TaskModuleState) => state.tasks
+    (state: fromFeature.State) => state.tasks
 );
 
 export const getTasks = createSelector(
     getTaskState,
-    (state: fromTasks.TaskState) => state.entities
+    (state: fromTasks.State) => state.entities
 );
 
 export const getSelectedTask = createSelector(
@@ -28,5 +28,5 @@ export const getSelectedTask = createSelector(
 
 export const getTasksLoaded = createSelector(
     getTaskState,
-    (state: fromTasks.TaskState) => state.loaded
+    (state: fromTasks.State) => state.loaded
 );

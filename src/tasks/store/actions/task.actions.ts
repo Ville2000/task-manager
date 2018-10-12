@@ -2,6 +2,9 @@ import { Action } from '@ngrx/store';
 
 import { Task } from '../../models/task.model';
 
+/** Älä määritä action constantteja stringeiksi!
+ * Muuten tulee jostain syystä error reducerissa.
+ * Esim. LIST_TASKS: string = '...'; <- ÄLÄ TYYPITÄ ACTION CONSTANTTEJA!!! */
 export const LIST_TASKS = '[Task] List tasks';
 export const LIST_TASKS_SUCCESS = '[Task] List tasks success';
 export const LIST_TASKS_FAIL = '[Task] List tasks failed';

@@ -13,7 +13,6 @@ import { Comment } from '../../models/comment.model';
 
 @Injectable()
 export class CommentEffects {
-    
     @Effect()
     createComment$: Observable<Action> = this.actions$.pipe(
         ofType(fromActions.CREATE_COMMENT),

@@ -5,10 +5,10 @@ import * as fromComments from './../reducers/comment.reducer';
 
 export const getCommentState = createSelector(
     fromFeature.getTaskModuleState,
-    (state: fromFeature.TaskModuleState) => state.comments
+    (state: fromFeature.State) => state.comments
 );
 
 export const getComments = createSelector(
     getCommentState,
-    (state: fromComments.CommentState) => state.entities
+    (state: fromComments.State) => state.entities
 );
