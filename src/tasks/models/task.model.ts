@@ -4,7 +4,6 @@ export interface Task {
   done: boolean;
   date: Date;
   creator: string;
-  comments: number[];
 }
 
 export const emptyTask = (): Task => {
@@ -12,7 +11,6 @@ export const emptyTask = (): Task => {
     name: null,
     done: false,
     date: new Date(),
-    creator: null,
-    comments: []
+    creator: null
   };
 }

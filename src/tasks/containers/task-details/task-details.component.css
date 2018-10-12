@@ -1,0 +1,21 @@
+:host {
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    grid-gap: 32px;
+    width: 500px;
+    margin: 32px auto;
+}
+
+h2 {
+    text-align: center;
+    margin: 0;
+}
+
+.comment-list {
+    display: grid;
+    grid-gap: 8px;
+}
+
+.comment-list > h3 {
+    margin: 0;
+}

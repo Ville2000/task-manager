@@ -1,0 +1,7 @@
+:host {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    grid-gap: 8px;
+    padding: 8px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}

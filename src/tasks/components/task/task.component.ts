@@ -3,16 +3,19 @@ import { Task } from "../../models/task.model";
 
 @Component({
   selector: 'task',
+  styleUrls: ['./task.component.css'],
   template: `
-    <div>
-      <div>{{ task.name }}</div>
-      <div>{{ task.comments.length }}</div>
-      <button (click)="remove.emit(task.id)">Poista</button>
-    </div>
+    <div class="task__name">{{ task.name }}</div>
+    <button class="task__remove-btn" (click)="removeTask($event, task.id)">x</button>
   `
 })
 
 export class TaskComponent {
   @Input() task: Task;
-  @Output() remove: EventEmitter<number> = new EventEmitter();
+  @Output() remove = new EventEmitter();
+
+  removeTask(event: Event, id: number): void {
+    event.stopPropagation();
+    this.remove.emit(id);
+  }
 }

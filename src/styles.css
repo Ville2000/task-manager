@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    max-width: 900px;
+    margin: auto;
+}
+
+button {
+    border: none;
+    background-color: #FBC02D;
+    font-weight: bold;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+}

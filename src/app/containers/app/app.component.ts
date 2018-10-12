@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  template: `
+    <navigation></navigation>
+    <router-outlet></router-outlet>
+  `
 })
 
 export class AppComponent {
-  title = 'task-manager';
+  title = 'Task Manager';
 
   constructor() {}
 }

@@ -1,0 +1,24 @@
+:host {
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    grid-gap: 16px;
+    width: 500px;
+    margin: 32px auto;
+}
+
+h2 {
+    text-align: center;
+    margin: 0;
+}
+
+.odd {
+    background-color: #FFF9C4;
+}
+
+.even {
+    background-color: #FFEE58;
+}
+
+.odd:hover, .even:hover {
+    background-color: #FFF59D;
+}

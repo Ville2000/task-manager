@@ -4,20 +4,27 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule, routerReducer, RouterReducerState, RouterStateSerializer } from '@ngrx/router-store';
+
 import { environment } from '../../environments/environment';
 
 import { TasksModule } from '../tasks/tasks.module';
-
-import { AppComponent } from './containers/app/app.component';
-import { FourOhFourComponent } from './containers/four-oh-four/four-oh-four.component';
 import { TaskState, reducer } from '../tasks/store/reducers/task.reducer';
+import * as fromContainers from './containers';
+import * as fromComponents from './components';
+
+import { CustomRouteSerializer } from './router-state';
+
 
 export interface AppState {
   tasks: TaskState;
+  router: RouterReducerState
 }
 
 const reducers: ActionReducerMap<AppState> = {
-  tasks: reducer
+  tasks: reducer,
+  router: routerReducer
 }
 
 const ROUTES: Routes = [
@@ -31,25 +38,27 @@ const ROUTES: Routes = [
     loadChildren: () => TasksModule
   },
   {
-    path: '**', component: FourOhFourComponent
+    path: '**', component: fromContainers.FourOhFourComponent
   }
 ]
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FourOhFourComponent
+    ...fromContainers.containers,
+    ...fromComponents.components
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
     StoreModule.forRoot(reducers),
+    StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
-    })
+    }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [fromContainers.AppComponent]
 })
 export class AppModule { }

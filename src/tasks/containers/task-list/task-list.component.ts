@@ -3,25 +3,27 @@ import { Observable } from 'rxjs';
 
 import { Router } from '@angular/router';
 
-import { TaskState, selectAllTasks } from '../../store/reducers/task.reducer';
+import { TaskState, getAllTasks } from '../../store/reducers/task.reducer';
 import { Component } from "@angular/core";
 import { Task, emptyTask } from "../../models/task.model";
 import * as fromActions from '../../store/actions';
+import * as fromStore from '../../store';
 
 @Component({
+  styleUrls: ['./task-list.component.css'],
   template: `
-    <h1>Tehtävälista</h1>
+    <h2>Tehtävälista</h2>
     <div *ngIf="!((tasks$ | async).length)">
       Ei tehtäviä tehtävälistalla
     </div>
-    <div *ngFor="let task of tasks$ | async">
-      <task (click)="selectTask(task.id)"
-        [task]="task"
-        (remove)="removeTask($event)"></task>
-    </div>
-    <task-form
+    <task *ngFor="let task of tasks$ | async; let odd = odd; let even = even;"
+      [ngClass]="{ odd: odd, even: even }"
+      [task]="task"
+      (remove)="removeTask($event)"
+      (click)="selectTask(task.id)"></task>
+    <task-form class="task-list__form"
       [task]="newTask"
-      (submitTask)="addTask($event)"></task-form>
+      (submit)="addTask()"></task-form>
   `
 })
 
@@ -30,15 +32,16 @@ export class TaskListComponent {
   public newTask: Task = emptyTask();
 
   constructor(private store: Store<TaskState>, private router: Router) {
-    this.tasks$ = this.store.pipe(select(selectAllTasks));
+    this.tasks$ = this.store.pipe(select(fromStore.getTasks));
+    this.store.dispatch(new fromActions.ListTasks());
   }
 
-  addTask(task: Task): void {
-    this.store.dispatch(new fromActions.AddTask({ ...task }));
+  addTask(): void {
+    this.store.dispatch(new fromActions.CreateTask({ ...this.newTask }));
     this.newTask = emptyTask();
   }
 
-  removeTask(id: number): void {
+  removeTask(id): void {
     this.store.dispatch(new fromActions.RemoveTask(id));
   }
 
