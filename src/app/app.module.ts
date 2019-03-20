@@ -30,7 +30,6 @@ const ROUTES: Routes = [
   }
 ]
 
-// TODO: Meta-reducers
 @NgModule({
   declarations: [
     ...fromContainers.containers,

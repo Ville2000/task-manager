@@ -49,8 +49,3 @@ export function reducer(
     }
   }
 }
-
-/** TODO: Näitä funktioita voisi käyttää selektoreissa.
-    Kirjoitan selektoreissa nämä funktiot uudelleen. */
-// export const getAllTasks = (state: TaskState) => state.tasks;
-// export const getSelectedTask = (state: TaskState) => state.selectedTask;

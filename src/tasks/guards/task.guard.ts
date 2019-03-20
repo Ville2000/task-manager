@@ -28,8 +28,7 @@ export class TaskGuard implements CanActivate {
       take(1)
     );
   }
-
-  // Guardeja pitää hanskata jonkin verran, jotta paras hyöty
+  
   // Tarkistaa, onko tehtävät ladatattu. Jos eivät, lataa ne
   checkStore(): Observable<boolean> {
     return this.store.select(fromStore.getTasksLoaded).pipe(

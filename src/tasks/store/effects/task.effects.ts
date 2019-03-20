@@ -12,11 +12,8 @@ import { Task } from '../../models/task.model';
 
 // RxJS:ssään apuja https://www.learnrxjs.io/
 
-// TODO: Täällä hoidetaan side effectit.
 @Injectable()
 export class TaskEffects {
-    // TODO: Effecti voi kuunnella samaa tyyppiä, joka on selektoituna jossai komponentissa.
-    // Kuunnellaan moduulin kautta
     @Effect()
     listTasks$: Observable<Action> = this.actions$.pipe(
         ofType(fromActions.LIST_TASKS),

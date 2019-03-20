@@ -11,7 +11,6 @@ export interface RouterState {
   params: Params;
 }
 
-// Sovelluksen root-state
 export interface State {
   route: fromRouter.RouterReducerState;
 }
@@ -41,5 +40,5 @@ export class CustomRouteSerializer implements fromRouter.RouterStateSerializer<R
   }
 }
 
-export const getRouterState = createFeatureSelector<
-  fromRouter.RouterReducerState<RouterState>>('route');
+export const getRouterState =
+  createFeatureSelector<fromRouter.RouterReducerState<RouterState>>('route');
