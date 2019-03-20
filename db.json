@@ -33,14 +33,14 @@
     {
       "comment": "Kom",
       "date": 1539250215900,
-      "likes": 0,
+      "likes": 1,
       "task": 1,
       "id": 4
     },
     {
       "comment": "test",
       "date": 1539250215900,
-      "likes": 1,
+      "likes": 4,
       "task": 1,
       "id": 5
     },
@@ -54,28 +54,28 @@
     {
       "comment": "No syöhän nyt!",
       "date": 1539255732115,
-      "likes": 1,
+      "likes": 8,
       "task": 4,
       "id": 7
     },
     {
       "comment": "Kommentt",
       "date": 1539334542876,
-      "likes": 0,
+      "likes": 1,
       "task": 1,
       "id": 8
     },
     {
       "comment": "tet",
       "date": 1539334578866,
-      "likes": 0,
+      "likes": 1,
       "task": 1,
       "id": 9
     },
     {
       "comment": "tetst",
       "date": 1539334921978,
-      "likes": 0,
+      "likes": 1,
       "task": 1,
       "id": 10
     },
@@ -89,16 +89,23 @@
     {
       "comment": "Tee enemmän opinnäytetyötä!",
       "date": 1539338029116,
-      "likes": 2,
+      "likes": 11,
       "task": 4,
       "id": 12
     },
     {
       "comment": "Korjaa esimerkkisovellus!",
       "date": 1539339246214,
-      "likes": 2,
+      "likes": 5,
       "task": 4,
       "id": 13
+    },
+    {
+      "comment": "Tämä on kommentti",
+      "date": 1552380905336,
+      "likes": 3,
+      "task": 1,
+      "id": 14
     }
   ]
 }

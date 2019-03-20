@@ -22,9 +22,13 @@ export function reducer(
 
         case fromActions.ALTER_COMMENT_SUCCESS: {
             const comment: Comment = action.payload;
-            const entities = state.entities
-                .filter(comment => comment.id !== action.payload.id)
-                .concat(comment);
+            const commentIndex = state.entities.findIndex(comment => (comment.id === action.payload.id));
+            const entities = [...state.entities];
+            
+            if (commentIndex !== -1) {
+                entities[commentIndex] = comment;
+            }
+
             return { ...state, entities};
         }
         

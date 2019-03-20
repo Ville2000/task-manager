@@ -1,22 +1,16 @@
 # TaskManager
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
+An examplary application to demonstrate capabilities of the NgRx library.
 
-## TODO
-* Kirjautuminen
-* Effects
-* Routing
-* Ei entiteettejä?
-* Ei adaptereita
-* Store-devtools, DONE
+## Prerequisites
 
-## Käynnistä kehityspalvelin
+- angular-cli v.6.2.1.
+- Node.js v.8+
 
-Aja `ng serve` ja navigoi selaimella osoitteeseen `http://localhost:4200/`.
+## Development
 
-## Käynnistä json-server
-
-Käynnistä json-server komennolla ` npx json-server db.json --routes routes.json `. Json-serveriä ei npx-komennolla ajettaessa asenneta koneelle.
+To start the mock api run `npx json-server db.json --routes routes.json` in project root.
+Run `ng serve` in project root directory. The app can now be viewed at `http://localhost:4200/`.
 
 ## Code scaffolding
 

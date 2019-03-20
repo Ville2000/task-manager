@@ -27,7 +27,7 @@ import * as fromStore from '../../store';
 })
 
 export class TaskListComponent {
-  private tasks$: Observable<Task[]>;
+  public tasks$: Observable<Task[]>;
   public newTask: Task = emptyTask();
 
   constructor(private store: Store<fromStore.State>, private router: Router) {
