@@ -39,19 +39,16 @@ const ROUTES: Routes = [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
     StoreModule.forRoot(fromStore.reducers),
-    StoreRouterConnectingModule,
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router'
+    }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
     }),
     EffectsModule.forRoot([])
   ],
-  providers: [
-    {
-      provide: RouterStateSerializer,
-      useClass: fromStore.CustomRouteSerializer
-    }
-  ],
+  providers: [],
   bootstrap: [fromContainers.AppComponent]
 })
 export class AppModule { }

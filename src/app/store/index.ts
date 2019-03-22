@@ -12,11 +12,11 @@ export interface RouterState {
 }
 
 export interface State {
-  route: fromRouter.RouterReducerState;
+  router: fromRouter.RouterReducerState<RouterState>;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  route: fromRouter.routerReducer
+  router: fromRouter.routerReducer
 }
 
 @Injectable()
