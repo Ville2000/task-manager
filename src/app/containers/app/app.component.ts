@@ -4,13 +4,13 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   styleUrls: ['./app.component.css'],
   template: `
-    <navigation></navigation>
+    <navigation [title]="title"></navigation>
     <router-outlet></router-outlet>
   `
 })
 
 export class AppComponent {
-  title = 'Task Manager';
+  public title = 'Tehtävämanageri';
 
   constructor() {}
 }

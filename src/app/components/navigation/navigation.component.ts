@@ -1,12 +1,14 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
     selector: 'navigation',
     styleUrls: ['./navigation.component.css'],
     template: `
-        <h1>Tehtävämanageri</h1>
+        <h1>{{ title }}</h1>
         <a routerLink="/">Tehtävälista</a>
     `
 })
 
-export class NavigationComponent {}
+export class NavigationComponent {
+    @Input() title: string;
+}
