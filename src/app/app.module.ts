@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { environment } from '../../environments/environment';
 
@@ -13,6 +13,7 @@ import { TasksModule } from '../tasks/tasks.module';
 import * as fromContainers from './containers';
 import * as fromComponents from './components';
 import * as fromStore from './store';
+import { SharedModule } from 'src/shared/shared.module';
 
 
 const ROUTES: Routes = [
@@ -26,6 +27,10 @@ const ROUTES: Routes = [
     loadChildren: () => TasksModule
   },
   {
+    path: 'login',
+    component: fromContainers.LoginComponent
+  },
+  {
     path: '**', component: fromContainers.FourOhFourComponent
   }
 ]
@@ -37,6 +42,7 @@ const ROUTES: Routes = [
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     RouterModule.forRoot(ROUTES),
     StoreModule.forRoot(fromStore.reducers),
     StoreRouterConnectingModule.forRoot({
